@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+
+thispath="$(dirname "$0")"
+
+. $thispath/PgsToSrtWrapper/venv/bin/activate;
+
+
+
+
+for var in "$@"
+do
+
+    DOTNET_EXECUTABLE="$thispath/PgsToSrtWrapper/dotnet/dotnet" PGSTOSRT_DLL="$thispath/PgsToSrtWrapper/PgsToSrt/PgsToSrt.dll" python $thispath/PgsToSrtWrapper/conversion.py "$(realpath $var)"
+done
