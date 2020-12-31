@@ -21,7 +21,6 @@ def _get_stream_number(path_to_mkv):
 # SDH
 
 def _extract_and_to_srt_subtitles(path_to_mkv, stream_no):
-    # dotnet /mnt/c/Users/CleptesGameStation/Downloads/PgsToSrt-1.2.0/PgsToSrt.dll --input test/test/Supernatural.S01E01.Pilot.1080p.BluRay.REMUX.VC-1.DD.5.1-EPSiLON.mkv --output ./test.srt --track 4
     path_to_log = re.sub(r'.mkv$','.pgstosrt.log',path_to_mkv)
     srt_path = re.sub(r'.mkv$','.srt',path_to_mkv)
     f = open(path_to_log,"w")
