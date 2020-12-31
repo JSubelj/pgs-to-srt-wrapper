@@ -63,10 +63,10 @@ services:
             - GID=1000 # Group id
 ```
 
-QBittorrent downloads folder should also point to {folder_to_your_media_root}.
+qBittorrent downloads folder should also point to {folder_to_your_media_root}.
 
-### QBittorrent setup
-- QBittorrent should have access to create_file.sh script.
+### qBittorrent setup
+- qBittorrent should have access to create_file.sh script.
 - In Tools -> Options-> Downloads check 'Run external program on torrent completion' and point it to create_file.sh with %F flag. In my case: `/config/create_file.sh %F` 
 - This creates a qbittorrent_notification.txt file on root of your media folder 
 - When daemon sees qbittorrent_notification.txt file it reads it and removes it, then starts conversion. 
