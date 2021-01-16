@@ -22,7 +22,7 @@ def _get_stream_number(path_to_mkv):
 
 def _extract_and_to_srt_subtitles(path_to_mkv, stream_no):
     path_to_log = re.sub(r'.mkv$','.pgstosrt.log',path_to_mkv)
-    srt_path = re.sub(r'.mkv$','.srt',path_to_mkv)
+    srt_path = re.sub(r'.mkv$','.eng.srt',path_to_mkv)
     f = open(path_to_log,"w")
 
     subprocess.run(shlex.split(f"{DOTNET_EXECUTABLE} {PGSTOSRT_DLL} --input \"{path_to_mkv}\" --output \"{srt_path}\" --track {str(stream_no)}"), stdout=f, stderr=subprocess.STDOUT)
