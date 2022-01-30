@@ -9,7 +9,9 @@ import multiprocessing
 SLEEPING_TIME_S = int(os.getenv("SLEEPING_TIME_S"))
 
 def discover_mkv(path):
-    return list(os.path.abspath(f) for f in glob.glob(os.path.join(path,"**/*.mkv"),recursive=True))
+    globbed_path = os.path.join(path,"**/*.mkv")
+    print(globbed_path,flush=True)
+    return list(os.path.abspath(f) for f in glob.glob(globbed_path,recursive=True))
 
 
 
@@ -23,8 +25,9 @@ def watch_for_qbittorrent_notifications(on_new):
                 content = f.read()
             print(datetime.now(),"[NewFilesWatcher]","removing qbittorrent_notification.txt",flush=True)
             os.unlink("/downloads/qbittorrent_notification.txt")
-
+            print("content: ",content)
             dirs = content.split("\n")
+            print("dirs: ", dirs)
             for f in dirs:
                 f=f.strip()
                 if not f:
@@ -35,8 +38,10 @@ def watch_for_qbittorrent_notifications(on_new):
 
                     multiprocessing.Process(target=start_conversion, args=(f, on_new)).start()
                 else:
+                    print("HERERERERE", flush=True)
                     print(datetime.now(),"[NewFilesWatcher]",f"Discovering mkvs in dir {f}",flush=True)
-
+                    print("HERE", flush=True)
+                    
                     files = discover_mkv(f)
                     for ff in files:
                         print(datetime.now(),"[NewFilesWatcher]",f"Starting conversion of {ff}",flush=True)

@@ -10,6 +10,8 @@ thispath="$(dirname "$0")"
 
 for var in "$@"
 do
+   # echo $var
+   # echo "$(realpath "$var")"
+DOTNET_EXECUTABLE="$thispath/PgsToSrtWrapper/dotnet/dotnet" PGSTOSRT_DLL="$thispath/PgsToSrtWrapper/PgsToSrt/PgsToSrt.dll" python $thispath/PgsToSrtWrapper/conversion.py "$(realpath "$var")"
 
-    DOTNET_EXECUTABLE="$thispath/PgsToSrtWrapper/dotnet/dotnet" PGSTOSRT_DLL="$thispath/PgsToSrtWrapper/PgsToSrt/PgsToSrt.dll" python $thispath/PgsToSrtWrapper/conversion.py "$(realpath $var)"
 done
